@@ -120,6 +120,17 @@
       "imgsrc": "https://m.media-amazon.com/images/I/51ECRZXoGyL._SX327_BO1,204,203,200_.jpg",
       "pages": "608",
       "id": "9e997f1f-1c41-41c4-a70b-c1c96b6bc8db"
+    },
+    {
+      "id": "66d0821a-255e-4757-bb9e-ba6c2f65f6c9",
+      "name": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "The Great Gatsby, F. Scott Fitzgerald's third book, stands as the supreme achievement of his career. This exemplary novel of the Jazz Age has been acclaimed by generations of readers. The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when The New York Times noted \"gin was the national drink and sex the national obsession,\" it is an exquisitely crafted tale of America in the 1920s.",
+      "genre": " Fiction",
+      "status": "New Books",
+      "color": "yellow",
+      "imgsrc": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490528560i/4671.jpg",
+      "pages": 180
     }
   ],
   "filters": [
