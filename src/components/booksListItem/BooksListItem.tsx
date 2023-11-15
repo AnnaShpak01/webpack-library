@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Transition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 
 type BookItemType = {
   name: string;
@@ -22,35 +22,30 @@ const BooksListItem = ({
   const [isVisible, setIsVisible] = useState(true);
 
   return (
-    <Transition in={isVisible} timeout={300} nodeRef={listItemRef}>
-      {(state) => (
-        <div
-          ref={listItemRef}
-          className={`card-of-book ${
-            state === 'entered' ? 'visible' : 'hidden'
-          }`}
-          style={{
-            transition: 'opacity 300ms ease-in-out',
-            opacity: state === 'entered' ? 1 : 0,
-          }}
-        >
-          <div className="card-name">{name}</div>
-          <div className="card-author">{author}</div>
-          <div className="card-genre">{genre}</div>
-          <div className="card-pages">{pages}</div>
-          <div className="card-status">{status}</div>
-          <div>
-            <span onClick={onDelete} className="badge bordered rounded-pill">
-              <button
-                type="button"
-                className="btn-close btn-close"
-                aria-label="Close"
-              ></button>
-            </span>
-          </div>
+    <CSSTransition
+      in={isVisible}
+      timeout={300}
+      classNames="fade"
+      nodeRef={listItemRef}
+      unmountOnExit
+    >
+      <div ref={listItemRef} className={`card-of-book`}>
+        <div className="card-name">{name}</div>
+        <div className="card-author">{author}</div>
+        <div className="card-genre">{genre}</div>
+        <div className="card-pages">{pages}</div>
+        <div className="card-status">{status}</div>
+        <div>
+          <span onClick={onDelete} className="badge bordered rounded-pill">
+            <button
+              type="button"
+              className="btn-close btn-close"
+              aria-label="Close"
+            ></button>
+          </span>
         </div>
-      )}
-    </Transition>
+      </div>
+    </CSSTransition>
   );
 };
 
