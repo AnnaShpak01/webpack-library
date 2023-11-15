@@ -115,6 +115,7 @@
   .filters-label {
     display: inline-flex;
     margin-bottom: 0;
+    padding-left: 10px;
 
     @media (max-width: 767px) {
       display: block;
@@ -128,7 +129,7 @@
   }
 
   .filters-block {
-    margin-left: 20px;
+    margin-left: 10px;
 
     @media (max-width: 767px) {
       margin-left: 0;
