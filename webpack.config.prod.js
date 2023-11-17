@@ -1,8 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -28,7 +30,16 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   optimization: {
-    minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()],
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+      new OptimizeCSSAssetsPlugin(),
+    ],
+    splitChunks: {
+      chunks: 'all',
+      name: 'common',
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -39,8 +50,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'styles.css',
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
   ],
   devServer: {
     historyApiFallback: true,
   },
+  devtool: 'source-map',
 };
