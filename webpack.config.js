@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -45,29 +45,25 @@ module.exports = {
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     splitChunks: {
       chunks: 'all',
-      minSize: 0,
-      maxSize: 244000,
-      minChunks: 1,
-      maxAsyncRequests: 6,
-      maxInitialRequests: 4,
-      automaticNameDelimiter: '.',
+      minSize: 30000,
+      maxSize: 100 * 1024,
+      minChunks: 2,
       cacheGroups: {
-        vendors: {
+        defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
           reuseExistingChunk: true,
         },
-        default: {
-          minChunks: 2,
+        main: {
+          test: /[\\/]src[\\/]/,
           priority: -20,
           reuseExistingChunk: true,
         },
-        common: {
-          name: 'common',
-          chunks: 'initial',
-          minChunks: 2,
-          priority: -30,
-          reuseExistingChunk: true,
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
         },
       },
     },

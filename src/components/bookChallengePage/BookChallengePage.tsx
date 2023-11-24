@@ -1,7 +1,11 @@
-import React from 'react'
-import AlphabetChallenge from './AlphabetChallenge'
-import BingoPage from './BingoPage'
-import './booksChallengePage.scss'
+import React from 'react';
+//import AlphabetChallenge from './AlphabetChallenge'
+import BingoPage from './BingoPage';
+import './booksChallengePage.scss';
+
+const AlphabetChallenge = React.lazy(
+  () => import(/* webpackPrefetch: true */ './AlphabetChallenge')
+);
 
 const BookChallengePage = () => {
   return (
@@ -27,7 +31,7 @@ const BookChallengePage = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default BookChallengePage
+export default BookChallengePage;

@@ -8,10 +8,11 @@ import './app.scss';
 import React from 'react';
 
 const BookShelvesPage = React.lazy(
-  () => import('../bookShelvesPage/BookShelvesPage')
+  () => import(/* webpackPrefetch: true */ '../bookShelvesPage/BookShelvesPage')
 );
 const BookChallengePage = React.lazy(
-  () => import('../bookChallengePage/BookChallengePage')
+  () =>
+    import(/* webpackPrefetch: true */ '../bookChallengePage/BookChallengePage')
 );
 
 const App = () => {
