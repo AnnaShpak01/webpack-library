@@ -9,8 +9,9 @@ module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: './src/index.tsx',
   output: {
-    filename: isProduction ? '[name].js' : '[name].[hash].js',
+    filename: isProduction ? '[name].[contenthash].js' : '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true, // Очистка старых файлов перед каждой сборкой
   },
   module: {
     rules: [
@@ -36,21 +37,22 @@ module.exports = {
     }),
     isProduction &&
       new MiniCssExtractPlugin({
-        filename: 'styles.[hash].css',
+        filename: 'styles.[contenthash].css',
       }),
   ],
   optimization: {
     minimize: true,
     minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
-    splitChunks: isProduction && {
+    splitChunks: {
       chunks: 'all',
-      defaultSizeTypes: ['javascript'],
-      maxSize: 50000,
-      minRemainingSize: 0,
+      minSize: 0,
+      maxSize: 244000,
       minChunks: 1,
-      enforceSizeThreshold: 50000,
+      maxAsyncRequests: 6,
+      maxInitialRequests: 4,
+      automaticNameDelimiter: '.',
       cacheGroups: {
-        defaultVendors: {
+        vendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
           reuseExistingChunk: true,
@@ -58,6 +60,13 @@ module.exports = {
         default: {
           minChunks: 2,
           priority: -20,
+          reuseExistingChunk: true,
+        },
+        common: {
+          name: 'common',
+          chunks: 'initial',
+          minChunks: 2,
+          priority: -30,
           reuseExistingChunk: true,
         },
       },

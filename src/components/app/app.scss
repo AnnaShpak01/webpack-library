@@ -2,10 +2,10 @@
   height: 100vh;
   overflow-y: scroll;
   padding-bottom: 20px;
-  background-image: url('../../img/paper-1074131_1280.jpg');
+  background-image: url('../../img/paper.jpg') !important;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 0;
+  padding-top: 0 !important;
 }
 
 .bordered {

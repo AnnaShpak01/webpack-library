@@ -2,12 +2,17 @@ import { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppHeader from '../appHeader/AppHeader';
 import Spinner from '../spinner/Spinner';
-import BookShelvesPage from '../bookShelvesPage/BookShelvesPage';
 import BooksPage from '../booksPage/BooksPage';
-import BookChallengePage from '../bookChallengePage/BookChallengePage';
 
 import './app.scss';
 import React from 'react';
+
+const BookShelvesPage = React.lazy(
+  () => import('../bookShelvesPage/BookShelvesPage')
+);
+const BookChallengePage = React.lazy(
+  () => import('../bookChallengePage/BookChallengePage')
+);
 
 const App = () => {
   return (
