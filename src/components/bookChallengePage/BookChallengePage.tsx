@@ -1,11 +1,7 @@
 import React from 'react';
-//import AlphabetChallenge from './AlphabetChallenge'
+import AlphabetChallenge from './AlphabetChallenge';
 import BingoPage from './BingoPage';
 import './booksChallengePage.scss';
-
-const AlphabetChallenge = React.lazy(
-  () => import(/* webpackPrefetch: true */ './AlphabetChallenge')
-);
 
 const BookChallengePage = () => {
   return (

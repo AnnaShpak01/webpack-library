@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -46,7 +47,7 @@ module.exports = {
     splitChunks: {
       chunks: 'all',
       minSize: 30000,
-      maxSize: 100 * 1024,
+      maxSize: 244 * 1024,
       minChunks: 2,
       cacheGroups: {
         defaultVendors: {
