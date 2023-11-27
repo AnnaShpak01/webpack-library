@@ -223,7 +223,7 @@
     {
       "task": "A number in the title",
       "color": "#DC143C",
-      "status": false,
+      "status": true,
       "id": "10"
     },
     {

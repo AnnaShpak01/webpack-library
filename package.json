@@ -8,7 +8,8 @@
     "build": "cross-env NODE_ENV=production webpack --stats-error-details",
     "start": "concurrently \"npm run react-start\" \"npm run json-server\"  NODE_ENV=development",
     "react-start": "webpack-dev-server --config webpack.config.js --open --port 3000",
-    "json-server": "json-server --watch books.json --port 3001"
+    "json-server": "json-server --watch books.json --port 3001",
+    "analyze": "cross-env BUNDLE_ANALYZER=true webpack --config webpack.config.js"
   },
   "author": "Anna Shpak",
   "license": "ISC",
