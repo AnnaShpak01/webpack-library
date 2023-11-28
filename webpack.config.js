@@ -78,6 +78,9 @@ module.exports = (env) => {
     devServer: {
       historyApiFallback: true,
     },
+    performance: {
+      hints: false,
+    },
   };
 
   if (env.BUNDLE_ANALYZER) {
